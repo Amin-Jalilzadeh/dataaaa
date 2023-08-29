@@ -1,0 +1,4551 @@
+<html>
+ <head>
+  <style>
+   body {
+        font-family: Arial, sans-serif;
+    }
+    .description {
+        background-color: lightblue;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+    .columns {
+        display: flex;
+        justify-content: space-between;
+    }
+    .column {
+        flex: 1;
+        border-right: 1px solid #000;
+        padding: 1em;
+    }
+    .column:last-child {
+        border-right: none;
+    }
+    .cluster {
+        font-weight: bold;
+    }
+    .table {
+        margin-left: 1em;
+    }
+  </style>
+  <script>
+   function toggleTableAttributes(tableId) {
+    var sections = document.getElementsByClassName("attributes-section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    document.getElementById(tableId).style.display = "block";
+}
+
+function toggleTableInfo(sectionId) {
+    var sections = document.getElementsByClassName("info-section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    document.getElementById(sectionId).style.display = "block";
+}
+  </script>
+ </head>
+ <body>
+  <div style="background-color: lightseagreen; padding: 1em; margin-bottom: 1em;">
+   In this database schema visualization, we provide an organized and detailed view of the data required for our project. The first column presents the various tables and clusters, with each table color-coded based on its level of importance. Clicking on a table reveals its attributes in the second column, while the third column provides further information related to data importance, source, usage phase, and more. Please note that this schema is a work in progress and will evolve as we conduct our literature review and establish our data infrastructure. This project is a part of a doctoral research effort, undertaken in collaboration with DATALESS.
+
+Thank you for your interest and support.
+
+Amin Jalilzadeh
+  </div>
+  <div class="columns">
+   <div class="column" id="column1">
+    <div style="font-weight: bold; margin-bottom: 1em;">
+     Tables and Clusters
+    </div>
+    <div class="cluster">
+     1. District Management
+    </div>
+    <a class="table" href="#table_district" onclick="toggleTableAttributes('table_district');toggleTableInfo('table_district_info')" style="color: Red;">
+     1. district
+    </a>
+    <a class="table" href="#table_district_targets" onclick="toggleTableAttributes('table_district_targets');toggleTableInfo('table_district_targets_info')" style="color: Red;">
+     2. district_targets
+    </a>
+    <a class="table" href="#table_geographic_regions" onclick="toggleTableAttributes('table_geographic_regions');toggleTableInfo('table_geographic_regions_info')" style="color: Red;">
+     3. geographic_regions
+    </a>
+    <a class="table" href="#table_positive_energy_district" onclick="toggleTableAttributes('table_positive_energy_district');toggleTableInfo('table_positive_energy_district_info')" style="color: Blue;">
+     4. positive_energy_district
+    </a>
+    <a class="table" href="#table_district_heating_and_cooling_Electricity" onclick="toggleTableAttributes('table_district_heating_and_cooling_Electricity');toggleTableInfo('table_district_heating_and_cooling_Electricity_info')" style="color: Red;">
+     5. district_heating_and_cooling_Electricity
+    </a>
+    <div class="cluster">
+     2. Building Management
+    </div>
+    <a class="table" href="#table_building" onclick="toggleTableAttributes('table_building');toggleTableInfo('table_building_info')" style="color: Red;">
+     1. building
+    </a>
+    <a class="table" href="#table_residential_building" onclick="toggleTableAttributes('table_residential_building');toggleTableInfo('table_residential_building_info')" style="color: Red;">
+     2. residential_building
+    </a>
+    <a class="table" href="#table_commercial_building" onclick="toggleTableAttributes('table_commercial_building');toggleTableInfo('table_commercial_building_info')" style="color: Blue;">
+     3. commercial_building
+    </a>
+    <a class="table" href="#table_public_building" onclick="toggleTableAttributes('table_public_building');toggleTableInfo('table_public_building_info')" style="color: Blue;">
+     4. public_building
+    </a>
+    <a class="table" href="#table_building_energy_consumption" onclick="toggleTableAttributes('table_building_energy_consumption');toggleTableInfo('table_building_energy_consumption_info')" style="color: Red;">
+     5. building_energy_consumption
+    </a>
+    <a class="table" href="#table_building_performance_rating" onclick="toggleTableAttributes('table_building_performance_rating');toggleTableInfo('table_building_performance_rating_info')" style="color: Red;">
+     6. building_performance_rating
+    </a>
+    <a class="table" href="#table_building_energy_source" onclick="toggleTableAttributes('table_building_energy_source');toggleTableInfo('table_building_energy_source_info')" style="color: Red;">
+     7. building_energy_source
+    </a>
+    <a class="table" href="#table_zero_energy_building" onclick="toggleTableAttributes('table_zero_energy_building');toggleTableInfo('table_zero_energy_building_info')" style="color: Blue;">
+     8. zero_energy_building
+    </a>
+    <a class="table" href="#table_building_simulation" onclick="toggleTableAttributes('table_building_simulation');toggleTableInfo('table_building_simulation_info')" style="color: Blue;">
+     9. building_simulation
+    </a>
+    <a class="table" href="#table_indoor_environment" onclick="toggleTableAttributes('table_indoor_environment');toggleTableInfo('table_indoor_environment_info')" style="color: Blue;">
+     10. indoor_environment
+    </a>
+    <a class="table" href="#table_energy_efficiency_measure" onclick="toggleTableAttributes('table_energy_efficiency_measure');toggleTableInfo('table_energy_efficiency_measure_info')" style="color: Red;">
+     11. energy_efficiency_measure
+    </a>
+    <div class="cluster">
+     3. Production Management
+    </div>
+    <a class="table" href="#table_generation_profile" onclick="toggleTableAttributes('table_generation_profile');toggleTableInfo('table_generation_profile_info')" style="color: Red;">
+     1. generation_profile
+    </a>
+    <a class="table" href="#table_energy_generation" onclick="toggleTableAttributes('table_energy_generation');toggleTableInfo('table_energy_generation_info')" style="color: Red;">
+     2. energy_generation
+    </a>
+    <a class="table" href="#table_renewable_energy_sources" onclick="toggleTableAttributes('table_renewable_energy_sources');toggleTableInfo('table_renewable_energy_sources_info')" style="color: Red;">
+     3. renewable_energy_sources
+    </a>
+    <a class="table" href="#table_renewable_energy_system" onclick="toggleTableAttributes('table_renewable_energy_system');toggleTableInfo('table_renewable_energy_system_info')" style="color: Red;">
+     4. renewable_energy_system
+    </a>
+    <a class="table" href="#table_solar_pv_system" onclick="toggleTableAttributes('table_solar_pv_system');toggleTableInfo('table_solar_pv_system_info')" style="color: Blue;">
+     5. solar_pv_system
+    </a>
+    <a class="table" href="#table_wind_turbine_system" onclick="toggleTableAttributes('table_wind_turbine_system');toggleTableInfo('table_wind_turbine_system_info')" style="color: Blue;">
+     6. wind_turbine_system
+    </a>
+    <div class="cluster">
+     4. Demand Management
+    </div>
+    <a class="table" href="#table_load_profile" onclick="toggleTableAttributes('table_load_profile');toggleTableInfo('table_load_profile_info')" style="color: Red;">
+     1. load_profile
+    </a>
+    <a class="table" href="#table_energy_demand" onclick="toggleTableAttributes('table_energy_demand');toggleTableInfo('table_energy_demand_info')" style="color: Red;">
+     2. energy_demand
+    </a>
+    <a class="table" href="#table_energy_demand_forecast" onclick="toggleTableAttributes('table_energy_demand_forecast');toggleTableInfo('table_energy_demand_forecast_info')" style="color: Red;">
+     3. energy_demand_forecast
+    </a>
+    <a class="table" href="#table_energy_demand_profile" onclick="toggleTableAttributes('table_energy_demand_profile');toggleTableInfo('table_energy_demand_profile_info')" style="color: Red;">
+     4. energy_demand_profile
+    </a>
+    <a class="table" href="#table_demand_response_event" onclick="toggleTableAttributes('table_demand_response_event');toggleTableInfo('table_demand_response_event_info')" style="color: DarkViolet;">
+     5. demand_response_event
+    </a>
+    <a class="table" href="#table_demand_response_program" onclick="toggleTableAttributes('table_demand_response_program');toggleTableInfo('table_demand_response_program_info')" style="color: DarkViolet;">
+     6. demand_response_program
+    </a>
+    <a class="table" href="#table_energy_audit" onclick="toggleTableAttributes('table_energy_audit');toggleTableInfo('table_energy_audit_info')" style="color: Orange;">
+     7. energy_audit
+    </a>
+    <div class="cluster">
+     5. Energy Storage
+    </div>
+    <a class="table" href="#table_energy_storage_system" onclick="toggleTableAttributes('table_energy_storage_system');toggleTableInfo('table_energy_storage_system_info')" style="color: Red;">
+     1. energy_storage_system
+    </a>
+    <a class="table" href="#table_storage_profile" onclick="toggleTableAttributes('table_storage_profile');toggleTableInfo('table_storage_profile_info')" style="color: Red;">
+     2. storage_profile
+    </a>
+    <div class="cluster">
+     6. Grid Interaction
+    </div>
+    <a class="table" href="#table_grid_connection" onclick="toggleTableAttributes('table_grid_connection');toggleTableInfo('table_grid_connection_info')" style="color: Red;">
+     1. grid_connection
+    </a>
+    <a class="table" href="#table_microgrid" onclick="toggleTableAttributes('table_microgrid');toggleTableInfo('table_microgrid_info')" style="color: Blue;">
+     2. microgrid
+    </a>
+    <a class="table" href="#table_smart_grid_system" onclick="toggleTableAttributes('table_smart_grid_system');toggleTableInfo('table_smart_grid_system_info')" style="color: DarkViolet;">
+     3. smart_grid_system
+    </a>
+    <a class="table" href="#table_grid_operator" onclick="toggleTableAttributes('table_grid_operator');toggleTableInfo('table_grid_operator_info')" style="color: Orange;">
+     4. grid_operator
+    </a>
+    <div class="cluster">
+     7. Energy Management
+    </div>
+    <a class="table" href="#table_energy_management_system" onclick="toggleTableAttributes('table_energy_management_system');toggleTableInfo('table_energy_management_system_info')" style="color: Green;">
+     1. energy_management_system
+    </a>
+    <a class="table" href="#table_energy_contract" onclick="toggleTableAttributes('table_energy_contract');toggleTableInfo('table_energy_contract_info')" style="color: DarkViolet;">
+     2. energy_contract
+    </a>
+    <a class="table" href="#table_energy_market" onclick="toggleTableAttributes('table_energy_market');toggleTableInfo('table_energy_market_info')" style="color: Green;">
+     3. energy_market
+    </a>
+    <a class="table" href="#table_virtual_power_plant" onclick="toggleTableAttributes('table_virtual_power_plant');toggleTableInfo('table_virtual_power_plant_info')" style="color: Red;">
+     4. virtual_power_plant
+    </a>
+    <a class="table" href="#table_energy_service_provider" onclick="toggleTableAttributes('table_energy_service_provider');toggleTableInfo('table_energy_service_provider_info')" style="color: DarkViolet;">
+     5. energy_service_provider
+    </a>
+    <a class="table" href="#table_energy_policy" onclick="toggleTableAttributes('table_energy_policy');toggleTableInfo('table_energy_policy_info')" style="color: Green;">
+     6. energy_policy
+    </a>
+    <div class="cluster">
+     8. Data Management
+    </div>
+    <a class="table" href="#table_energy_data_exchange" onclick="toggleTableAttributes('table_energy_data_exchange');toggleTableInfo('table_energy_data_exchange_info')" style="color: Red;">
+     1. energy_data_exchange
+    </a>
+    <a class="table" href="#table_sensor_data" onclick="toggleTableAttributes('table_sensor_data');toggleTableInfo('table_sensor_data_info')" style="color: Blue;">
+     2. sensor_data
+    </a>
+    <a class="table" href="#table_external_data_source" onclick="toggleTableAttributes('table_external_data_source');toggleTableInfo('table_external_data_source_info')" style="color: Green;">
+     3. external_data_source
+    </a>
+    <a class="table" href="#table_smart_meter" onclick="toggleTableAttributes('table_smart_meter');toggleTableInfo('table_smart_meter_info')" style="color: Blue;">
+     4. smart_meter
+    </a>
+    <div class="cluster">
+     9. Weather Data
+    </div>
+    <a class="table" href="#table_weather_data" onclick="toggleTableAttributes('table_weather_data');toggleTableInfo('table_weather_data_info')" style="color: Red;">
+     1. weather_data
+    </a>
+    <a class="table" href="#table_weather_stations" onclick="toggleTableAttributes('table_weather_stations');toggleTableInfo('table_weather_stations_info')" style="color: Black;">
+     2. weather_stations
+    </a>
+    <div class="cluster">
+     10. Occupant Data
+    </div>
+    <a class="table" href="#table_occupant" onclick="toggleTableAttributes('table_occupant');toggleTableInfo('table_occupant_info')" style="color: Blue;">
+     1. occupant
+    </a>
+    <a class="table" href="#table_occupant_activity_schedule" onclick="toggleTableAttributes('table_occupant_activity_schedule');toggleTableInfo('table_occupant_activity_schedule_info')" style="color: Blue;">
+     2. occupant_activity_schedule
+    </a>
+    <a class="table" href="#table_occupant_energy_use" onclick="toggleTableAttributes('table_occupant_energy_use');toggleTableInfo('table_occupant_energy_use_info')" style="color: Blue;">
+     3. occupant_energy_use
+    </a>
+    <div class="cluster">
+     11. Optimization
+    </div>
+    <a class="table" href="#table_optimization_algorithm" onclick="toggleTableAttributes('table_optimization_algorithm');toggleTableInfo('table_optimization_algorithm_info')" style="color: Black;">
+     1. optimization_algorithm
+    </a>
+    <a class="table" href="#table_optimization_scenario" onclick="toggleTableAttributes('table_optimization_scenario');toggleTableInfo('table_optimization_scenario_info')" style="color: Black;">
+     2. optimization_scenario
+    </a>
+    <a class="table" href="#table_optimization_result" onclick="toggleTableAttributes('table_optimization_result');toggleTableInfo('table_optimization_result_info')" style="color: Black;">
+     3. optimization_result
+    </a>
+    <div class="cluster">
+     12. Functions
+    </div>
+    <a class="table" href="#table_digital_twin" onclick="toggleTableAttributes('table_digital_twin');toggleTableInfo('table_digital_twin_info')" style="color: Black;">
+     1. digital_twin
+    </a>
+    <a class="table" href="#table_energy_balance_hourly" onclick="toggleTableAttributes('table_energy_balance_hourly');toggleTableInfo('table_energy_balance_hourly_info')" style="color: Black;">
+     2. energy_balance_hourly
+    </a>
+    <a class="table" href="#table_energy_balance" onclick="toggleTableAttributes('table_energy_balance');toggleTableInfo('table_energy_balance_info')" style="color: Black;">
+     3. energy_balance
+    </a>
+   </div>
+   <div class="column" id="column2">
+    <div style="font-weight: bold; margin-bottom: 1em;">
+     Attributes
+    </div>
+    <div class="attributes-section" id="table_district" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      location
+     </div>
+     <div>
+      description
+     </div>
+     <div>
+      total_area
+     </div>
+     <div>
+      total_energy_consumption
+     </div>
+     <div>
+      total_energy_production
+     </div>
+     <div>
+      carbon_footprint
+     </div>
+     <div>
+      energy_efficiency_goal
+     </div>
+    </div>
+    <div class="attributes-section" id="table_district_targets" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      district_id
+     </div>
+     <div>
+      year
+     </div>
+     <div>
+      ghg_emission_reduction_pct
+     </div>
+     <div>
+      renewable_energy_share_pct
+     </div>
+     <div>
+      energy_efficiency_improvement_pct
+     </div>
+    </div>
+    <div class="attributes-section" id="table_geographic_regions" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      region_name
+     </div>
+     <div>
+      description
+     </div>
+     <div>
+      location
+     </div>
+    </div>
+    <div class="attributes-section" id="table_positive_energy_district" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      location
+     </div>
+     <div>
+      annual_energy_balance_target
+     </div>
+    </div>
+    <div class="attributes-section" id="table_district_heating_and_cooling_Electricity" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      system_type
+     </div>
+     <div>
+      capacity
+     </div>
+     <div>
+      efficiency
+     </div>
+     <div>
+      distribution_network
+     </div>
+     <div>
+      energy_source
+     </div>
+     <div>
+      central_plant_location
+     </div>
+     <div>
+      network_losses
+     </div>
+     <div>
+      metering_scheme
+     </div>
+    </div>
+    <div class="attributes-section" id="table_building" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      district_id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      type
+     </div>
+     <div>
+      address
+     </div>
+     <div>
+      lat
+     </div>
+     <div>
+      lon
+     </div>
+     <div>
+      total_area
+     </div>
+     <div>
+      energy_consumption
+     </div>
+     <div>
+      energy_production
+     </div>
+     <div>
+      zeb_status
+     </div>
+     <div>
+      construction_year
+     </div>
+     <div>
+      building_certification
+     </div>
+     <div>
+      heating_system
+     </div>
+     <div>
+      cooling_system
+     </div>
+     <div>
+      insulation_level
+     </div>
+     <div>
+      glazing_type
+     </div>
+     <div>
+      shading_system
+     </div>
+     <div>
+      occupancy
+     </div>
+     <div>
+      number_of_floors
+     </div>
+     <div>
+      envelope_material
+     </div>
+     <div>
+      lighting_system
+     </div>
+     <div>
+      energy_rating
+     </div>
+     <div>
+      energy_label
+     </div>
+    </div>
+    <div class="attributes-section" id="table_residential_building" style="display:none;">
+     <div>
+      building_id
+     </div>
+     <div>
+      num_of_residents
+     </div>
+     <div>
+      FOREIGN
+     </div>
+    </div>
+    <div class="attributes-section" id="table_commercial_building" style="display:none;">
+     <div>
+      building_id
+     </div>
+     <div>
+      business_type
+     </div>
+     <div>
+      FOREIGN
+     </div>
+    </div>
+    <div class="attributes-section" id="table_public_building" style="display:none;">
+     <div>
+      building_id
+     </div>
+     <div>
+      public_building_type
+     </div>
+     <div>
+      FOREIGN
+     </div>
+    </div>
+    <div class="attributes-section" id="table_building_energy_consumption" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      energy_source_id
+     </div>
+     <div>
+      consumed_units
+     </div>
+    </div>
+    <div class="attributes-section" id="table_building_performance_rating" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      rating_type
+     </div>
+     <div>
+      rating_value
+     </div>
+     <div>
+      rating_date
+     </div>
+    </div>
+    <div class="attributes-section" id="table_building_energy_source" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      energy_source_id
+     </div>
+     <div>
+      capacity
+     </div>
+     <div>
+      efficiency
+     </div>
+     <div>
+      installation_date
+     </div>
+     <div>
+      operational
+     </div>
+    </div>
+    <div class="attributes-section" id="table_zero_energy_building" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      energy_performance_coefficient
+     </div>
+     <div>
+      FOREIGN
+     </div>
+    </div>
+    <div class="attributes-section" id="table_building_simulation" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      simulation_software
+     </div>
+     <div>
+      simulation_inputs
+     </div>
+     <div>
+      simulation_outputs
+     </div>
+     <div>
+      simulation_date
+     </div>
+     <div>
+      simulation_accuracy
+     </div>
+     <div>
+      simulation_scenario
+     </div>
+     <div>
+      simulation_assumptions
+     </div>
+     <div>
+      calibration_status
+     </div>
+    </div>
+    <div class="attributes-section" id="table_indoor_environment" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      temperature
+     </div>
+     <div>
+      humidity
+     </div>
+     <div>
+      co2_concentration
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_efficiency_measure" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      measure_type
+     </div>
+     <div>
+      implementation_date
+     </div>
+     <div>
+      expected_energy_savings
+     </div>
+     <div>
+      actual_energy_savings
+     </div>
+     <div>
+      payback_period
+     </div>
+     <div>
+      investment_cost
+     </div>
+     <div>
+      maintenance_cost
+     </div>
+    </div>
+    <div class="attributes-section" id="table_generation_profile" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      renewable_energy_system_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      energy_generation
+     </div>
+     <div>
+      capacity_factor
+     </div>
+     <div>
+      weather_condition
+     </div>
+     <div>
+      system_efficiency
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_generation" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      generation_type_id
+     </div>
+     <div>
+      capacity
+     </div>
+     <div>
+      efficiency
+     </div>
+     <div>
+      lat
+     </div>
+     <div>
+      lon
+     </div>
+     <div>
+      installed_year
+     </div>
+     <div>
+      electricity_generation
+     </div>
+     <div>
+      heating_generation
+     </div>
+     <div>
+      cooling_generation
+     </div>
+     <div>
+      timestamp
+     </div>
+    </div>
+    <div class="attributes-section" id="table_renewable_energy_sources" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      res_type_id
+     </div>
+     <div>
+      capacity
+     </div>
+     <div>
+      efficiency
+     </div>
+     <div>
+      location
+     </div>
+    </div>
+    <div class="attributes-section" id="table_renewable_energy_system" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      system_type
+     </div>
+     <div>
+      manufacturer
+     </div>
+     <div>
+      model
+     </div>
+     <div>
+      installation_date
+     </div>
+     <div>
+      capacity
+     </div>
+     <div>
+      efficiency
+     </div>
+     <div>
+      generation_profile
+     </div>
+     <div>
+      operational_status
+     </div>
+     <div>
+      scheduled_maintenance_id
+     </div>
+     <div>
+      power_output
+     </div>
+     <div>
+      emission_reduction
+     </div>
+     <div>
+      resource_availability
+     </div>
+     <div>
+      inverter_type
+     </div>
+     <div>
+      tracking_system
+     </div>
+     <div>
+      energy_storage_id
+     </div>
+     <div>
+      integration_type
+     </div>
+     <div>
+      grid_connection
+     </div>
+     <div>
+      system_lifetime
+     </div>
+     <div>
+      warranty
+     </div>
+    </div>
+    <div class="attributes-section" id="table_solar_pv_system" style="display:none;">
+     <div>
+      renewable_energy_system_id
+     </div>
+     <div>
+      panel_type
+     </div>
+    </div>
+    <div class="attributes-section" id="table_wind_turbine_system" style="display:none;">
+     <div>
+      renewable_energy_system_id
+     </div>
+     <div>
+      rotor_diameter
+     </div>
+    </div>
+    <div class="attributes-section" id="table_load_profile" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      energy_consumption
+     </div>
+     <div>
+      peak_demand
+     </div>
+     <div>
+      base_demand
+     </div>
+     <div>
+      time_of_use
+     </div>
+     <div>
+      demand_response_status
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_demand" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      electricity_demand
+     </div>
+     <div>
+      heating_demand
+     </div>
+     <div>
+      cooling_demand
+     </div>
+     <div>
+      hot_water_demand
+     </div>
+     <div>
+      energy_efficiency_measures
+     </div>
+     <div>
+      energy_saving_potential
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_demand_forecast" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      electricity_demand_sub_hourly
+     </div>
+     <div>
+      electricity_demand_hourly
+     </div>
+     <div>
+      electricity_demand_daily
+     </div>
+     <div>
+      electricity_demand_weekly
+     </div>
+     <div>
+      electricity_demand_monthly
+     </div>
+     <div>
+      electricity_demand_yearly
+     </div>
+     <div>
+      heating_demand_sub_hourly
+     </div>
+     <div>
+      heating_demand_hourly
+     </div>
+     <div>
+      heating_demand_daily
+     </div>
+     <div>
+      heating_demand_weekly
+     </div>
+     <div>
+      heating_demand_monthly
+     </div>
+     <div>
+      heating_demand_yearly
+     </div>
+     <div>
+      cooling_demand_sub_hourly
+     </div>
+     <div>
+      cooling_demand_hourly
+     </div>
+     <div>
+      cooling_demand_daily
+     </div>
+     <div>
+      cooling_demand_weekly
+     </div>
+     <div>
+      cooling_demand_monthly
+     </div>
+     <div>
+      cooling_demand_yearly
+     </div>
+     <div>
+      hot_water_demand_sub_hourly
+     </div>
+     <div>
+      hot_water_demand_hourly
+     </div>
+     <div>
+      hot_water_demand_daily
+     </div>
+     <div>
+      hot_water_demand_weekly
+     </div>
+     <div>
+      hot_water_demand_monthly
+     </div>
+     <div>
+      hot_water_demand_yearly
+     </div>
+     <div>
+      prediction_method
+     </div>
+     <div>
+      prediction_accuracy
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_demand_profile" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      demand_type
+     </div>
+     <div>
+      demand_value
+     </div>
+     <div>
+      peak_demand
+     </div>
+     <div>
+      off_peak_demand
+     </div>
+     <div>
+      baseload_demand
+     </div>
+     <div>
+      seasonal_variation
+     </div>
+     <div>
+      hourly_variation
+     </div>
+     <div>
+      demand_response_potential
+     </div>
+     <div>
+      demand_flexibility
+     </div>
+     <div>
+      energy_end_use
+     </div>
+     <div>
+      energy_efficiency_measures
+     </div>
+     <div>
+      demand_reduction
+     </div>
+     <div>
+      load_shifting
+     </div>
+     <div>
+      energy_conservationcy
+     </div>
+    </div>
+    <div class="attributes-section" id="table_demand_response_event" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      start_time
+     </div>
+     <div>
+      end_time
+     </div>
+     <div>
+      incentive
+     </div>
+     <div>
+      event_type
+     </div>
+     <div>
+      response_status
+     </div>
+    </div>
+    <div class="attributes-section" id="table_demand_response_program" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      program_name
+     </div>
+     <div>
+      description
+     </div>
+     <div>
+      incentive_type
+     </div>
+     <div>
+      incentive_amount
+     </div>
+     <div>
+      enrollment_start
+     </div>
+     <div>
+      enrollment_end
+     </div>
+     <div>
+      program_start
+     </div>
+     <div>
+      program_end
+     </div>
+     <div>
+      total_energy_savings
+     </div>
+     <div>
+      total_incentives_received
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_audit" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      audit_date
+     </div>
+     <div>
+      auditor
+     </div>
+     <div>
+      audit_type
+     </div>
+     <div>
+      audit_scope
+     </div>
+     <div>
+      energy_baseline
+     </div>
+     <div>
+      potential_savings
+     </div>
+     <div>
+      implementation_cost
+     </div>
+     <div>
+      audit_methodology
+     </div>
+     <div>
+      data_collection_tools
+     </div>
+     <div>
+      energy_end_uses
+     </div>
+     <div>
+      benchmark_comparison
+     </div>
+     <div>
+      findings
+     </div>
+     <div>
+      recommendations
+     </div>
+     <div>
+      estimated_energy_savings
+     </div>
+     <div>
+      estimated_cost_savings
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_storage_system" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      type
+     </div>
+     <div>
+      capacity
+     </div>
+     <div>
+      installation_date
+     </div>
+     <div>
+      efficiency
+     </div>
+     <div>
+      lifetime
+     </div>
+     <div>
+      manufacturer
+     </div>
+     <div>
+      model
+     </div>
+     <div>
+      maintenance_interval
+     </div>
+     <div>
+      charge_efficiency
+     </div>
+     <div>
+      discharge_efficiency
+     </div>
+     <div>
+      depth_of_discharge
+     </div>
+     <div>
+      round_trip_efficiency
+     </div>
+    </div>
+    <div class="attributes-section" id="table_storage_profile" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      energy_storage_system_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      energy_storage
+     </div>
+     <div>
+      state_of_charge
+     </div>
+     <div>
+      charge_cycle
+     </div>
+     <div>
+      discharge_cycle
+     </div>
+     <div>
+      storage_efficiency
+     </div>
+    </div>
+    <div class="attributes-section" id="table_grid_connection" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      connection_type
+     </div>
+     <div>
+      connection_capacity
+     </div>
+     <div>
+      grid_voltage_level
+     </div>
+     <div>
+      grid_frequency
+     </div>
+     <div>
+      transformer_capacity
+     </div>
+     <div>
+      max_import_capacity
+     </div>
+     <div>
+      max_export_capacity
+     </div>
+     <div>
+      connection_cost
+     </div>
+    </div>
+    <div class="attributes-section" id="table_microgrid" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      district_id
+     </div>
+     <div>
+      microgrid_name
+     </div>
+     <div>
+      microgrid_type
+     </div>
+     <div>
+      connected_buildings
+     </div>
+     <div>
+      total_generation_capacity
+     </div>
+     <div>
+      total_storage_capacity
+     </div>
+     <div>
+      total_demand
+     </div>
+     <div>
+      peak_demand
+     </div>
+     <div>
+      base_demand
+     </div>
+     <div>
+      grid_connection_status
+     </div>
+     <div>
+      control_strategy
+     </div>
+    </div>
+    <div class="attributes-section" id="table_smart_grid_system" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      communication_protocol
+     </div>
+     <div>
+      grid_topology
+     </div>
+    </div>
+    <div class="attributes-section" id="table_grid_operator" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      address
+     </div>
+     <div>
+      contact_info
+     </div>
+     <div>
+      service_area
+     </div>
+     <div>
+      grid_capacity
+     </div>
+     <div>
+      interconnection_requirements
+     </div>
+     <div>
+      grid_reliability
+     </div>
+     <div>
+      grid_flexibility
+     </div>
+     <div>
+      grid_resilience
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_management_system" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      type
+     </div>
+     <div>
+      installation_date
+     </div>
+     <div>
+      manufacturer
+     </div>
+     <div>
+      model
+     </div>
+     <div>
+      communication_protocol
+     </div>
+     <div>
+      control_strategy
+     </div>
+     <div>
+      software_version
+     </div>
+     <div>
+      supported_standards
+     </div>
+     <div>
+      supported_devices
+     </div>
+     <div>
+      energy_management_features
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_contract" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      contract_start_date
+     </div>
+     <div>
+      contract_end_date
+     </div>
+     <div>
+      energy_supplier
+     </div>
+     <div>
+      contract_type
+     </div>
+     <div>
+      contract_rate
+     </div>
+     <div>
+      additional_fees
+     </div>
+     <div>
+      contract_terms
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_market" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      market_name
+     </div>
+     <div>
+      market_type
+     </div>
+     <div>
+      market_rules
+     </div>
+     <div>
+      market_start_date
+     </div>
+     <div>
+      market_end_date
+     </div>
+     <div>
+      market_timescale
+     </div>
+     <div>
+      market_clearing_price
+     </div>
+    </div>
+    <div class="attributes-section" id="table_virtual_power_plant" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      district_id
+     </div>
+     <div>
+      vpp_name
+     </div>
+     <div>
+      vpp_type
+     </div>
+     <div>
+      connected_buildings
+     </div>
+     <div>
+      total_generation_capacity
+     </div>
+     <div>
+      total_storage_capacity
+     </div>
+     <div>
+      total_demand
+     </div>
+     <div>
+      aggregated_flexibility
+     </div>
+     <div>
+      control_strategy
+     </div>
+     <div>
+      market_participation
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_service_provider" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      address
+     </div>
+     <div>
+      contact_info
+     </div>
+     <div>
+      service_type
+     </div>
+     <div>
+      service_area
+     </div>
+     <div>
+      service_level_agreement
+     </div>
+     <div>
+      customer_satisfaction
+     </div>
+     <div>
+      service_pricing
+     </div>
+     <div>
+      service_provider_rating
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_policy" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      policy_type
+     </div>
+     <div>
+      policy_description
+     </div>
+     <div>
+      implementation_date
+     </div>
+     <div>
+      expiration_date
+     </div>
+     <div>
+      compliance_status
+     </div>
+     <div>
+      policy_goals
+     </div>
+     <div>
+      monitoring_mechanism
+     </div>
+     <div>
+      enforcement_agency
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_data_exchange" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      sender_building_id
+     </div>
+     <div>
+      receiver_building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      amount
+     </div>
+     <div>
+      exchange_type
+     </div>
+     <div>
+      exchange_price
+     </div>
+     <div>
+      settlement_details
+     </div>
+     <div>
+      grid_impact
+     </div>
+     <div>
+      emission_reduction
+     </div>
+     <div>
+      losses
+     </div>
+     <div>
+      exchange_agreement
+     </div>
+     <div>
+      transmission_line_id
+     </div>
+     <div>
+      metering_data
+     </div>
+    </div>
+    <div class="attributes-section" id="table_sensor_data" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      sensor_id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      data_type
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      value
+     </div>
+     <div>
+      unit
+     </div>
+    </div>
+    <div class="attributes-section" id="table_external_data_source" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      description
+     </div>
+     <div>
+      url
+     </div>
+     <div>
+      data_format
+     </div>
+    </div>
+    <div class="attributes-section" id="table_smart_meter" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      meter_type
+     </div>
+     <div>
+      installation_date
+     </div>
+     <div>
+      meter_manufacturer
+     </div>
+     <div>
+      meter_model
+     </div>
+     <div>
+      communication_type
+     </div>
+     <div>
+      data_granularity
+     </div>
+     <div>
+      data_storage_capacity
+     </div>
+     <div>
+      meter_reading
+     </div>
+     <div>
+      firmware_version
+     </div>
+     <div>
+      meter_accuracy
+     </div>
+     <div>
+      certification
+     </div>
+     <div>
+      metering_point
+     </div>
+     <div>
+      network_operator
+     </div>
+     <div>
+      meter_operator
+     </div>
+     <div>
+      time_synchronization
+     </div>
+    </div>
+    <div class="attributes-section" id="table_weather_data" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      temperature
+     </div>
+     <div>
+      humidity
+     </div>
+     <div>
+      precipitation
+     </div>
+     <div>
+      wind_speed
+     </div>
+     <div>
+      wind_direction
+     </div>
+     <div>
+      solar_radiation
+     </div>
+     <div>
+      cloud_cover
+     </div>
+     <div>
+      weather_condition
+     </div>
+     <div>
+      weather_forecast
+     </div>
+     <div>
+      weather_station_id
+     </div>
+     <div>
+      weather_station_location
+     </div>
+     <div>
+      data_provider
+     </div>
+     <div>
+      data_quality
+     </div>
+     <div>
+      data_frequency
+     </div>
+     <div>
+      data_coverage
+     </div>
+     <div>
+      location_id
+     </div>
+    </div>
+    <div class="attributes-section" id="table_weather_stations" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      station_name
+     </div>
+     <div>
+      location
+     </div>
+    </div>
+    <div class="attributes-section" id="table_occupant" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      age
+     </div>
+     <div>
+      gender
+     </div>
+     <div>
+      working_hours
+     </div>
+     <div>
+      num_occupants_in_household
+     </div>
+     <div>
+      energy_awareness_level
+     </div>
+     <div>
+      energy_saving_behavior
+     </div>
+     <div>
+      energy_usage_pattern
+     </div>
+     <div>
+      communication_preferences
+     </div>
+     <div>
+      preferred_energy_tariff
+     </div>
+     <div>
+      mobility_profile
+     </div>
+     <div>
+      comfort_preferences
+     </div>
+     <div>
+      health_conditions
+     </div>
+     <div>
+      smart_device_ownership
+     </div>
+     <div>
+      energy_feedback
+     </div>
+     <div>
+      energy_conservation_goals
+     </div>
+     <div>
+      energy_budget
+     </div>
+     <div>
+      occupation
+     </div>
+    </div>
+    <div class="attributes-section" id="table_occupant_activity_schedule" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      start_time
+     </div>
+     <div>
+      end_time
+     </div>
+     <div>
+      day_of_week
+     </div>
+     <div>
+      repeating
+     </div>
+    </div>
+    <div class="attributes-section" id="table_occupant_energy_use" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      heating_energy
+     </div>
+     <div>
+      cooling_energy
+     </div>
+     <div>
+      electrical_energy
+     </div>
+     <div>
+      hot_water_energy
+     </div>
+    </div>
+    <div class="attributes-section" id="table_optimization_algorithm" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      description
+     </div>
+    </div>
+    <div class="attributes-section" id="table_optimization_scenario" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      description
+     </div>
+     <div>
+      start_date
+     </div>
+     <div>
+      end_date
+     </div>
+    </div>
+    <div class="attributes-section" id="table_optimization_result" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      optimization_scenario_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      energy_demand_reduction
+     </div>
+     <div>
+      energy_generation_adjustment
+     </div>
+     <div>
+      grid_interaction_adjustment
+     </div>
+     <div>
+      cost_saving
+     </div>
+     <div>
+      ghg_emission_reduction
+     </div>
+    </div>
+    <div class="attributes-section" id="table_digital_twin" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      name
+     </div>
+     <div>
+      description
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_balance_hourly" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      electricity_demand
+     </div>
+     <div>
+      electricity_generation
+     </div>
+     <div>
+      electricity_imported
+     </div>
+     <div>
+      electricity_exported
+     </div>
+     <div>
+      heating_demand
+     </div>
+     <div>
+      heating_generation
+     </div>
+     <div>
+      heating_imported
+     </div>
+     <div>
+      heating_exported
+     </div>
+     <div>
+      cooling_demand
+     </div>
+     <div>
+      cooling_generation
+     </div>
+     <div>
+      cooling_imported
+     </div>
+     <div>
+      cooling_exported
+     </div>
+    </div>
+    <div class="attributes-section" id="table_energy_balance" style="display:none;">
+     <div>
+      id
+     </div>
+     <div>
+      building_id
+     </div>
+     <div>
+      timestamp
+     </div>
+     <div>
+      electricity_balance
+     </div>
+     <div>
+      heating_balance
+     </div>
+     <div>
+      cooling_balance
+     </div>
+    </div>
+   </div>
+   <div class="column" id="column3">
+    <div style="font-weight: bold; margin-bottom: 1em;">
+     Information
+    </div>
+    <div class="info-section" id="table_district_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Collected Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 6
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_district_targets_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Collected Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_geographic_regions_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Open Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 6
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_positive_energy_district_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 6
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_district_heating_and_cooling_Electricity_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_building_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Open Data-Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      All
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_residential_building_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      All
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_commercial_building_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      All
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_public_building_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      All
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_building_energy_consumption_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_building_performance_rating_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Open Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 4
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_building_energy_source_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_zero_energy_building_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 4
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_building_simulation_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_indoor_environment_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Collected Data-Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_efficiency_measure_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 4
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_generation_profile_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_generation_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_renewable_energy_sources_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_renewable_energy_system_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_solar_pv_system_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_wind_turbine_system_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_load_profile_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_demand_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_demand_forecast_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_demand_profile_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_demand_response_event_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Nice-to-Have Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_demand_response_program_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Nice-to-Have Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_audit_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Additional Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_storage_system_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_storage_profile_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_grid_connection_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_microgrid_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_smart_grid_system_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Nice-to-Have Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_grid_operator_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Additional Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 6
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_management_system_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Supplementary Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_contract_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Nice-to-Have Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Government Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_market_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Supplementary Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Government Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_virtual_power_plant_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_service_provider_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Nice-to-Have Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_policy_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Supplementary Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Government Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_data_exchange_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_sensor_data_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_external_data_source_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Supplementary Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 6
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_smart_meter_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_weather_data_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Essential Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Open Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2,3
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_weather_stations_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_occupant_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2,5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_occupant_activity_schedule_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2,5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_occupant_energy_use_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      Valuable Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Private Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      Phase 2,5
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_optimization_algorithm_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_optimization_scenario_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_optimization_result_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_digital_twin_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_balance_hourly_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+    <div class="info-section" id="table_energy_balance_info" style="display:none;">
+     <div>
+      <span style="font-weight: bold;">
+       Data Importance:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Source of the data:
+      </span>
+      Generated Data
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Phase of usage:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Can be simulated?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       From where to collect?:
+      </span>
+      nan
+      <br/>
+     </div>
+     <div>
+      <span style="font-weight: bold;">
+       Format:
+      </span>
+      nan
+      <br/>
+     </div>
+    </div>
+   </div>
+   <div class="column" id="column4">
+    <div style="font-weight: bold; margin-bottom: 1em;">
+     Legend
+    </div>
+    <div>
+     <span style="font-weight: bold; font-size: 1.2em; text-decoration: underline;">
+      Legend 1: Data Importance:
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold; color: Red;">
+      Essential Data:
+     </span>
+     <span style="">
+      Data that is critical for the project and without which the project cannot proceed.
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold; color: Blue;">
+      Valuable Data:
+     </span>
+     <span style="">
+      Data that significantly enhances the project's quality or efficiency, but is not strictly necessary for the project to proceed.
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold; color: Green;">
+      Supplementary Data:
+     </span>
+     <span style="">
+      Data that provides additional insights and may be helpful in specific cases, but is not essential to the overall project.
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold; color: Brown;">
+      Optional Data:
+     </span>
+     <span style="">
+      Data that could be included in the project if available, but does not have a significant impact on the project's success or quality.
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold; color: DarkViolet;">
+      Nice-to-Have Data:
+     </span>
+     <span style="">
+      Data that could be interesting or useful to have, but is not a priority and does not have a direct impact on the project.
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold; color: Orange;">
+      Additional Data:
+     </span>
+     <span style="">
+      Data that may not be directly related to the project, but could provide some context or background information.
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold; font-size: 1.2em; text-decoration: underline;">
+      Legend 2: Data Source:
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Open Data:
+     </span>
+     Data that is publicly available and can be accessed without any restrictions.
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Collected Data:
+     </span>
+     Data that needs to be actively collected, for example through surveys, observations, or measurements.
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Private Data:
+     </span>
+     Data that is provided by or obtained from specific companies, organizations, or individuals and is not publicly available.
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Government Data:
+     </span>
+     Data that is provided by or obtained from government agencies or public institutions.
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Purchased/Third-Party Data:
+     </span>
+     Data that is obtained from third-party providers, such as data brokers, market research firms, or through purchase or licensing.
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Generated Data:
+     </span>
+     Data that is generated within your own organization or through simulations or models.
+    </div>
+    <div>
+     <span style="font-weight: bold; font-size: 1.2em; text-decoration: underline;">
+      Legend 3: Phase of Usage:
+     </span>
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Phase 1:
+     </span>
+     Data Infra
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Phase 2:
+     </span>
+     Demand
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Phase 3:
+     </span>
+     Generation
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Phase 4:
+     </span>
+     Energy efficiency
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Phase 5:
+     </span>
+     optimization
+    </div>
+    <div>
+     <span style="font-weight: bold;">
+      Phase 6:
+     </span>
+     Digital Twin
+    </div>
+   </div>
+  </div>
+  <div id="version-history" style="margin-top: 2em;">
+   <h2>
+    Version History
+   </h2>
+   <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+     <tr>
+      <th style="border: 1px solid black; padding: 8px;">
+       Version
+      </th>
+      <th style="border: 1px solid black; padding: 8px;">
+       Date
+      </th>
+      <th style="border: 1px solid black; padding: 8px;">
+       Description
+      </th>
+     </tr>
+    </thead>
+   </table>
+  </div>
+ </body>
+</html>
